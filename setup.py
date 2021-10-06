@@ -2,12 +2,12 @@ from distutils.core import setup
 
 setup(
     name='py-synology',
-    version='0.4.0',
+    version='0.5.0',
     packages=['synology'],
-    url='https://github.com/snjoetw/py-synology',
+    url='https://github.com/metronidazole/py-synology',
     license='MIT',
-    author='snjoetw',
-    author_email='snjoetw@gmail.com',
-    description='Python API for Synology Surveillance Station',
+    author='snjoetw, metronidazole',
+    author_email='',
+    description='Python API for Synology Surveillance Station (DSM7)',
     requires=['requests']
 )
