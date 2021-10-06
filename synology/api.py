@@ -9,7 +9,7 @@ ERROR_CODE_SESSION_EXPIRED = 105
 BASE_API_INFO = {
     'auth': {
         'name': 'SYNO.API.Auth',
-        'version': 2
+        'version': 7
     },
     'camera': {
         'name': 'SYNO.SurveillanceStation.Camera',
@@ -80,7 +80,7 @@ class Api:
             'version': '1',
             'query': ','.join(API_NAMES),
         }, **kwargs)
-        response = self._get_json_with_retry(self._base_url + 'query.cgi',
+        response = self._get_json_with_retry(self._base_url + 'entry.cgi',
                                              payload)
 
         self._api_info = BASE_API_INFO
@@ -92,7 +92,7 @@ class Api:
         api = self._api_info['auth']
         payload = dict({
             'api': api['name'],
-            'method': 'Login',
+            'method': 'login',
             'version': api['version'],
             'account': self._username,
             'passwd': self._password,
