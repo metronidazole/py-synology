@@ -4,7 +4,8 @@ import urllib
 import requests
 
 
-ERROR_CODE_SESSION_EXPIRED = 105
+ERROR_CODE_INSUFFICIENT_PRIVILEGE = 105
+ERROR_CODE_SESSION_EXPIRED = 106
 
 BASE_API_INFO = {
     'auth': {
@@ -329,8 +330,11 @@ class Api:
         if 'success' not in content or content['success'] is False:
             error_code = content.get('error', {}).get('code')
 
-            if ERROR_CODE_SESSION_EXPIRED == error_code:
+            if error_code == ERROR_CODE_SESSION_EXPIRED:
                 raise SessionExpiredException('Session expired')
+
+            if error_code == ERROR_CODE_INSUFFICIENT_PRIVILEGE:
+                raise InsufficientPrivilegeException('Insufficient user privilege')
 
             raise ValueError('Invalid or failed response', content)
 
@@ -395,3 +399,6 @@ class MotionSetting:
 
 class SessionExpiredException(Exception):
     """An error indicating session expired."""
+
+class InsufficientPrivilegeException(Exception):
+    """An error indicating insufficient user privilege."""
