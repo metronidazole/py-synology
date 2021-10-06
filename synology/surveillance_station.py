@@ -16,6 +16,10 @@ class SurveillanceStation:
 
         self.update()
 
+    def logout(self):
+        """Logout from synology api."""
+        return self._api.logout()
+
     def update(self):
         """Update cameras and motion settings with latest from API."""
         cameras = self._api.camera_list()

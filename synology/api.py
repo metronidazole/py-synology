@@ -103,6 +103,23 @@ class Api:
 
         self._sid = response['data']['sid']
 
+    def logout(self, **kwargs):
+        """Logout from synology API"""
+
+        api = self._api_info['auth']
+        payload = dict({
+            'api': api['name'],
+            'method': 'logout',
+            'version': api['version'],
+            '_sid': self._sid,
+        }, **kwargs)
+        response = self._get_json_with_retry(api['url'], payload)
+
+        if response['success']:
+            return True
+
+        return False
+
     def home_mode_set_state(self, state, **kwargs):
         """Set the state of Home Mode"""
 
