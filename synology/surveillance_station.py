@@ -8,13 +8,14 @@ from synology.api import (
 class SurveillanceStation:
     """An implementation of a Synology SurveillanceStation."""
 
-    def __init__(self, url, username, password, timeout=10, verify_ssl=True):
+    def __init__(self, url, username, password, timeout=10, verify_ssl=True, update=True):
         """Initialize a Surveillance Station."""
         self._api = Api(url, username, password, timeout, verify_ssl)
         self._cameras_by_id = None
         self._motion_settings_by_id = None
 
-        self.update()
+        if update:
+            self.update()
 
     def logout(self):
         """Logout from synology api."""
