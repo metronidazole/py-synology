@@ -21,7 +21,7 @@ BASE_API_INFO = {
         'version': 1
     },
     'video_stream': {
-        'name': 'SYNO.SurveillanceStation.VideoStream',
+        'name': 'SYNO.SurveillanceStation.VideoStreaming',
         'version': 1
     },
     'home_mode': {
